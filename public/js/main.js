@@ -25,7 +25,8 @@ window.addEventListener('load', async () => {
 //helper functions
 
 async function cloudinaryfetch() {
-    const key = `007d1d8e-425f-474d-a8a0-7235cad917c6`
+    // const key = `007d1d8e-425f-474d-a8a0-7235cad917c6`
+    const key = lookUpKey;
     const baseUrl = "http://mind-ar-cms-dev.ap-southeast-1.elasticbeanstalk.com"
     const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     const myObject = result.data.data.data;
