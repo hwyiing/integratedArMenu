@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AR Menu Demo</title>
+    <link rel="icon" type="image/x-icon" href="./favicon_io/favicon.ico">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap"
+        rel="stylesheet">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/js/mindar/mindar-image-three.prod.js"></script>
+
+    <script src="/js/main.js" type="module"></script>
+
+    <style>
+        #my-ar-container {
+            height: 600px;
+            /* width: 400px;  */
+            /* position: relative; */
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="welcome">
+        <h1> <a> AUGMENTED </a>
+            <a>REALITY </a>
+            <a>DINING </a>
+        </h1>
+    </div>
+    <div id="ready">
+        <button class="button-gradient" role="button" id="startbutton" style="visibility:hidden"><span class="text">
+                BEGIN! </span></button>
+    </div>
+    <div class="preloader">
+    </div>
+    <p id="demo"></p>
+    <div id="my-ar-container"></div>
+</body>
+<script>
+</script>
+
+</html>
