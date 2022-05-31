@@ -14,9 +14,10 @@ window.addEventListener('load', async () => {
     //start button to overcome IOS browser
     await onInit(loadedVideos, mind_file);
     //button will appear upon load 
-    const startButton = document.getElementById('startbutton');
+    const startButton = document.getElementById('ready');
     startButton.style.visibility = "visible";
-    startButton.addEventListener('click', async () => {
+    const hide_card = document.getElementById('hiddingCard');
+    hide_card.addEventListener('click', async () => {
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
     })

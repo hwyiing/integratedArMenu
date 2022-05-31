@@ -12,6 +12,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap"
         rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="/js/mindar/mindar-image-three.prod.js"></script>
@@ -21,25 +25,44 @@
     <style>
         #my-ar-container {
             height: 600px;
-            /* width: 400px;  */
-            /* position: relative; */
             overflow: hidden;
+        }
+
+        #ready {
+            top: 50%;
+            right: 0;
+            left: 0;
+            width: 200px;
+            margin: 0 auto 0 auto;
+            visibility: hidden;
         }
     </style>
 </head>
 
-<body>
-    <div id="welcome">
-        <h1> <a> AUGMENTED </a>
-            <a>REALITY </a>
-            <a>DINING </a>
-        </h1>
-    </div>
-    <div id="ready">
-        <button class="button-gradient" role="button" id="startbutton" style="visibility:hidden"><span class="text">
-                BEGIN! </span></button>
-    </div>
-    <div class="preloader">
+<body id="hiddingCard">
+    <div class="container">
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+            <div id="welcome" class="card o-hidden border-1 shadow-lg my-5">
+                <div class="card-body border border-info bg-secondary-gradient shadow border-6">
+                    <div class="p-5" class="col-md-12">
+                        <div id="welcome">
+                            <h2>
+                                <a>AUGMENTED REALITY DINING</a>
+                            </h2>
+                            <br>
+                        </div>
+                        <div class="text-center" id="ready">
+                            <button class="button-gradient" role="button">
+                                <span>BEGIN!</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="preloader">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <p id="demo"></p>
     <div id="my-ar-container"></div>
