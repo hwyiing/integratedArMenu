@@ -8,9 +8,7 @@ window.addEventListener('load', async () => {
     const mind_file = await cloudinaryfetch();
     // pre-load videos by getting the DOM elements
     const loadedVideos = document.querySelectorAll(".chroma-vid");
-    for (const vid of loadedVideos) {
-        await vid.load();
-    }
+
     //start button to overcome IOS browser
     await onInit(loadedVideos, mind_file);
     //button will appear upon load 
@@ -18,6 +16,11 @@ window.addEventListener('load', async () => {
     startButton.style.visibility = "visible";
     const hide_card = document.getElementById('hiddingCard');
     hide_card.addEventListener('click', async () => {
+        for (const vid of loadedVideos) {
+            await vid.load();
+            await vid.play();
+            await vid.pause()
+        }
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
     })
