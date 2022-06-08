@@ -24,7 +24,6 @@ window.addEventListener('load', async () => {
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
     })
-
 });
 
 //helper functions
