@@ -19,7 +19,7 @@ window.addEventListener('load', async () => {
         for (const vid of loadedVideos) {
             await vid.load();
             await vid.play();
-            await vid.pause()
+            await vid.pause();
         }
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
