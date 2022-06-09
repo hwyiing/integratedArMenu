@@ -20,7 +20,6 @@ window.addEventListener('load', async() => {
     hide_card.addEventListener('click', async() => {
         for (const vid of loadedVideos) {
             await vid.play();
-            await vid.pause();
         }
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
@@ -32,7 +31,7 @@ window.addEventListener('load', async() => {
 async function cloudinaryfetch() {
     // const key = `007d1d8e-425f-474d-a8a0-7235cad917c6`
     // const key = lookUpKey;
-    // const baseUrl = "http://mind-ar-cms-dev.ap-southeast-1.elasticbeanstalk.com"
+    // const baseUrl = "https://mind-ar-cms-dev.ap-southeast-1.elasticbeanstalk.com"
     // const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     // const myObject = result.data.data.data;
     const myObject = [
@@ -113,13 +112,13 @@ async function start_ar(loadedChromaVids, mind_file) {
 
             anchor.group.add(GSplane);
 
-            anchor.onTargetFound = () => {
-                // video.muted = false;
-                GSvideo.play();
-            }
-            anchor.onTargetLost = () => {
-                GSvideo.pause();
-            }
+            // anchor.onTargetFound = () => {
+            //     // video.muted = false;
+            //     GSvideo.play();
+            // }
+            // anchor.onTargetLost = () => {
+            //     GSvideo.pause();
+            // }
         }
     }
     await mindarThree.start();
@@ -143,6 +142,8 @@ function createGSplane(GSvideo) {
 }
 
 function hideDiv() {
-    const div = document.getElementById("welcome");
-    div.classList.toggle('hidden');
+    const div_list = document.getElementById("welcome");
+
+    div_list.style.display = "none";
+
 }
