@@ -3,7 +3,7 @@ import { createChromaMaterial } from './chroma-video.js';
 
 const THREE = window.MINDAR.IMAGE.THREE;
 
-window.addEventListener('load', async () => {
+window.addEventListener('load', async() => {
     //function to fetch videos and create a div of the video elements 
     const mind_file = await cloudinaryfetch();
     // pre-load videos by getting the DOM elements
@@ -17,7 +17,7 @@ window.addEventListener('load', async () => {
     const startButton = document.getElementById('ready');
     startButton.style.visibility = "visible";
     const hide_card = document.getElementById('hiddingCard');
-    hide_card.addEventListener('click', async () => {
+    hide_card.addEventListener('click', async() => {
         for (const vid of loadedVideos) {
             await vid.play();
             await vid.pause();
@@ -36,15 +36,15 @@ async function cloudinaryfetch() {
     // const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     // const myObject = result.data.data.data;
     const myObject = [
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1649137005/demo/eating-edited_aiaioj.mp4",
-        "http://res.cloudinary.com/daqm1fsjr/video/upload/v1648860672/demo/curry-rice-shifted_sopien.mp4"
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137005/demo/eating-edited_aiaioj.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648860672/demo/curry-rice-shifted_sopien.mp4"
     ]
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
@@ -123,7 +123,7 @@ async function start_ar(loadedChromaVids, mind_file) {
         }
     }
     await mindarThree.start();
-    await renderer.setAnimationLoop(async () => {
+    await renderer.setAnimationLoop(async() => {
         await renderer.render(scene, camera);
     });
 }
