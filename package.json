@@ -7,7 +7,7 @@
         "build": "nodemon ./bin/www"
     },
     "engines": {
-        "node": "14.x"
+        "node": "14.18.0"
     },
     "dependencies": {
         "bcrypt": "^5.0.0",
