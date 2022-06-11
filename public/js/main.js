@@ -33,19 +33,20 @@ async function cloudinaryfetch() {
     // const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     // const myObject = result.data.data.data;
     const myObject = [
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1654926685/demo/ukyd_pudding_zoomed_in_xsdgfq.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137005/demo/eating-edited_aiaioj.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648860672/demo/curry-rice-shifted_sopien.mp4"
-    ]
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1654926685/demo/ukyd_pudding_zoomed_in_xsdgfq.mp4"
+        ]
+        // "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1654926685/demo/ukyd_pudding_zoomed_in_xsdgfq.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137005/demo/eating-edited_aiaioj.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648860672/demo/curry-rice-shifted_sopien.mp4"
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
-    return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1653930595/mind_ar/targets-both/1e38422d-5a8b-45af-b89a-d012c2c3dd46"
+    return "https://res.cloudinary.com/daqm1fsjr/raw/upload/v1654927940/targets_ltgjw5.mind"
 }
 
 //helper function which creates one division consisting of multiple video elements
@@ -146,9 +147,9 @@ function createGSplane(GSvideo, i) {
     const GSplane = new THREE.Mesh(GSgeometry, GSmaterial);
     //GSplane.position.z = 0.05;
     //GSplane.position.x = -0.2;
-    if (i == 3) {
+    if (i == 0) {
         GSplane.scale.multiplyScalar(2.7);
-        GSplane.position.x = -1;
+        GSplane.position.x = -0.8;
     } else {
         GSplane.scale.multiplyScalar(2);
         GSplane.rotation.z = Math.PI / 2;
