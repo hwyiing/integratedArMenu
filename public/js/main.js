@@ -36,7 +36,7 @@ async function cloudinaryfetch() {
         "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
         "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
         "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
-        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
+        "https://res.cloudinary.com/daqm1fsjr/video/upload/v1654926685/demo/ukyd_pudding_zoomed_in_xsdgfq.mp4",
         "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
         "https://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
         "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
@@ -111,7 +111,7 @@ async function start_ar(loadedChromaVids, mind_file) {
 
         anchors.push(mindarThree.addAnchor(i));
         const GSvideo = loadedChromaVids[i];;
-        const GSplane = createGSplane(GSvideo, 1, 3 / 4);
+        const GSplane = createGSplane(GSvideo, i);
 
         if (i < anchors.length) {
 
@@ -139,16 +139,20 @@ async function start_ar(loadedChromaVids, mind_file) {
 }
 
 
-function createGSplane(GSvideo) {
+function createGSplane(GSvideo, i) {
     const GStexture = new THREE.VideoTexture(GSvideo);
     const GSgeometry = new THREE.PlaneGeometry(1, 1080 / 1920);
     const GSmaterial = createChromaMaterial(GStexture, 0x00ff38);
     const GSplane = new THREE.Mesh(GSgeometry, GSmaterial);
-    GSplane.scale.multiplyScalar(2);
     //GSplane.position.z = 0.05;
-    GSplane.rotation.z = Math.PI / 2;
     //GSplane.position.x = -0.2;
-
+    if (i == 3) {
+        GSplane.scale.multiplyScalar(2.7);
+        GSplane.position.x = -1;
+    } else {
+        GSplane.scale.multiplyScalar(2);
+        GSplane.rotation.z = Math.PI / 2;
+    }
     return GSplane
 }
 
