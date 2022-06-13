@@ -2,8 +2,6 @@ import { createChromaMaterial } from './chroma-video.js';
 
 const THREE = window.MINDAR.IMAGE.THREE;
 
-let is_tap = true;
-
 window.addEventListener('load', async() => {
     //function to fetch videos and create a div of the video elements 
     const mind_file = await cloudinaryfetch();
@@ -13,14 +11,16 @@ window.addEventListener('load', async() => {
         await vid.load();
     }
     //start button to overcome IOS browser
-    await onInit(loadedVideos, mind_file);
     //button will appear upon load 
     const startButton = document.getElementById('ready');
     startButton.style.visibility = "visible";
     const hide_card = document.getElementById('hiddingCard');
-    hide_card.addEventListener('click', async() => {
+    hide_card.addEventListener('click', async function loadedPlanes() {
         hideDiv();
         startButton.style.display = "none"; //button will disappear upon click
+        await start_ar(loadedVideos, mind_file);
+        await loadFirstVideo(loadedVideos)
+        document.body.removeEventListener("click", loadedPlanes, false);
     })
 });
 
@@ -38,7 +38,7 @@ async function cloudinaryfetch() {
         // "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
         //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
         //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1654926685/demo/ukyd_pudding_zoomed_in_xsdgfq.mp4",
+        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
         //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
         //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
         //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
@@ -47,6 +47,7 @@ async function cloudinaryfetch() {
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
     return "https://res.cloudinary.com/daqm1fsjr/raw/upload/v1654927940/targets_ltgjw5.mind"
+        //"https://res.cloudinary.com/dwuqadyl0/raw/upload/v1653930595/mind_ar/targets-both/1e38422d-5a8b-45af-b89a-d012c2c3dd46"
 }
 
 //helper function which creates one division consisting of multiple video elements
@@ -81,23 +82,15 @@ async function createVideoElement(videoUrl) {
     return video;
 }
 
-async function onInit(loadedChromaVids, mind_file) {
-    //should listen for clicks only after first page
-    async function eventHandler(e) {
-        await start_ar(loadedChromaVids, mind_file);
-        // remove this handler
-        const play_tap = document.getElementById('my-ar-container');
-        play_tap.addEventListener('click', async() => {
-            for (const video of loadedChromaVids) {
-                video.play()
-            }
-            tap_on_me.style.display = "none";
-            is_tap = false;
-        })
-        document.body.removeEventListener('click', eventHandler, false);
-    }
-    document.body.addEventListener("click", eventHandler);
+async function loadFirstVideo(loadedChromaVids) {
+    const play_tap = document.getElementById('my-ar-container');
+    play_tap.addEventListener('click', async() => {
+        for (const video of loadedChromaVids) {
+            video.play()
+        }
+    })
 }
+
 
 async function start_ar(loadedChromaVids, mind_file) {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
@@ -112,7 +105,7 @@ async function start_ar(loadedChromaVids, mind_file) {
 
         anchors.push(mindarThree.addAnchor(i));
         const GSvideo = loadedChromaVids[i];;
-        const GSplane = createGSplane(GSvideo, i);
+        const GSplane = createGSplane(GSvideo, 1, 3 / 4);
 
         if (i < anchors.length) {
 
@@ -121,14 +114,9 @@ async function start_ar(loadedChromaVids, mind_file) {
 
             // when matched case
             anchor.onTargetFound = () => {
-                if (is_tap) {
-                    const tap_on_me = document.getElementById('tap_on_me');
-                    tap_on_me.style.display = "block";
-                }
                 GSvideo.play();
             }
             anchor.onTargetLost = () => {
-                // tap_on_me.style.display = "none";
                 GSvideo.pause();
             }
         }
@@ -140,26 +128,19 @@ async function start_ar(loadedChromaVids, mind_file) {
 }
 
 
-function createGSplane(GSvideo, i) {
+function createGSplane(GSvideo) {
     const GStexture = new THREE.VideoTexture(GSvideo);
     const GSgeometry = new THREE.PlaneGeometry(1, 1080 / 1920);
     const GSmaterial = createChromaMaterial(GStexture, 0x00ff38);
     const GSplane = new THREE.Mesh(GSgeometry, GSmaterial);
+    GSplane.scale.multiplyScalar(2);
     //GSplane.position.z = 0.05;
+    GSplane.rotation.z = Math.PI / 2;
     //GSplane.position.x = -0.2;
-    if (i == 0) {
-        GSplane.scale.multiplyScalar(2.7);
-        GSplane.position.x = -0.8;
-    } else {
-        GSplane.scale.multiplyScalar(2);
-        GSplane.rotation.z = Math.PI / 2;
-    }
     return GSplane
 }
 
 function hideDiv() {
     const div_list = document.getElementById("welcome");
-
     div_list.style.display = "none";
-
 }
