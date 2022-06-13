@@ -1,7 +1,6 @@
 import { createChromaMaterial } from './chroma-video.js';
 
 const THREE = window.MINDAR.IMAGE.THREE;
-
 window.addEventListener('load', async() => {
     //function to fetch videos and create a div of the video elements 
     const mind_file = await cloudinaryfetch();
@@ -10,7 +9,6 @@ window.addEventListener('load', async() => {
     for (const vid of loadedVideos) {
         await vid.load();
     }
-    //start button to overcome IOS browser
     //button will appear upon load 
     const startButton = document.getElementById('ready');
     startButton.style.visibility = "visible";
@@ -25,7 +23,6 @@ window.addEventListener('load', async() => {
 });
 
 //helper functions
-
 async function cloudinaryfetch() {
     // const key = `007d1d8e-425f-474d-a8a0-7235cad917c6`
     // const key = lookUpKey;
@@ -33,20 +30,22 @@ async function cloudinaryfetch() {
     // const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     // const myObject = result.data.data.data;
     const myObject = [
-            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1654926685/demo/ukyd_pudding_zoomed_in_xsdgfq.mp4"
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137005/demo/eating-edited_aiaioj.mp4",
+            "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648860672/demo/curry-rice-shifted_sopien.mp4"
         ]
-        // "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648862479/demo/sushi-3-kiap_quw0yq.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648021846/demo/sushi-1_w1z64u.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648879390/demo/red_xvcrty.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649136484/demo/pudding-edited_qou4j7.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137597/demo/lengzaab-edited_e5llxi.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1646810038/demo/kitsune-udon_tltngm.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648878896/demo/fire_zd67jv.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1649137005/demo/eating-edited_aiaioj.mp4",
-        //     "https://res.cloudinary.com/daqm1fsjr/video/upload/v1648860672/demo/curry-rice-shifted_sopien.mp4"
+        // "https://res.cloudinary.com/daqm1fsjr/video/upload/v1654926685/demo/ukyd_pudding_zoomed_in_xsdgfq.mp4"
+
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
-    return "https://res.cloudinary.com/daqm1fsjr/raw/upload/v1654927940/targets_ltgjw5.mind"
+    return "https://res.cloudinary.com/dwuqadyl0/raw/upload/v1653930595/mind_ar/targets-both/1e38422d-5a8b-45af-b89a-d012c2c3dd46"
+        // "https://res.cloudinary.com/daqm1fsjr/raw/upload/v1654927940/targets_ltgjw5.mind"
         //"https://res.cloudinary.com/dwuqadyl0/raw/upload/v1653930595/mind_ar/targets-both/1e38422d-5a8b-45af-b89a-d012c2c3dd46"
 }
 
@@ -62,6 +61,7 @@ async function createVideoDivision(reviewObject) {
     }
     document.body.insertBefore(newDiv, currentDiv);
 }
+
 
 ///helper function which returns a video Element 
 async function createVideoElement(videoUrl) {
@@ -90,7 +90,6 @@ async function loadFirstVideo(loadedChromaVids) {
         }
     })
 }
-
 
 async function start_ar(loadedChromaVids, mind_file) {
     const mindarThree = new window.MINDAR.IMAGE.MindARThree({
@@ -133,15 +132,21 @@ function createGSplane(GSvideo, i) {
     const GSgeometry = new THREE.PlaneGeometry(1, 1080 / 1920);
     const GSmaterial = createChromaMaterial(GStexture, 0x00ff38);
     const GSplane = new THREE.Mesh(GSgeometry, GSmaterial);
-    if (i == 0) {
-        GSplane.scale.multiplyScalar(2.7);
-        GSplane.position.x = -0.8;
-    } else {
-        GSplane.scale.multiplyScalar(2);
-        //GSplane.position.z = 0.05;
-        GSplane.rotation.z = Math.PI / 2;
-        //GSplane.position.x = -0.2;
-    }
+    GSplane.scale.multiplyScalar(2);
+    //GSplane.position.z = 0.05;
+    GSplane.rotation.z = Math.PI / 2;
+    //GSplane.position.x = -0.2;
+
+    // put this back when continuing demo for UKYD
+    // if (i == 0) {
+    //     GSplane.scale.multiplyScalar(2.7);
+    //     GSplane.position.x = -0.8;
+    // } else {
+    //     GSplane.scale.multiplyScalar(2);
+    //     //GSplane.position.z = 0.05;
+    //     GSplane.rotation.z = Math.PI / 2;
+    //     //GSplane.position.x = -0.2;
+    // }
 
     return GSplane
 }
