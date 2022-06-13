@@ -133,10 +133,16 @@ function createGSplane(GSvideo) {
     const GSgeometry = new THREE.PlaneGeometry(1, 1080 / 1920);
     const GSmaterial = createChromaMaterial(GStexture, 0x00ff38);
     const GSplane = new THREE.Mesh(GSgeometry, GSmaterial);
-    GSplane.scale.multiplyScalar(2);
-    //GSplane.position.z = 0.05;
-    GSplane.rotation.z = Math.PI / 2;
-    //GSplane.position.x = -0.2;
+    if (i == 0) {
+        GSplane.scale.multiplyScalar(2.7);
+        GSplane.position.x = -0.8;
+    } else {
+        GSplane.scale.multiplyScalar(2);
+        //GSplane.position.z = 0.05;
+        GSplane.rotation.z = Math.PI / 2;
+        //GSplane.position.x = -0.2;
+    }
+
     return GSplane
 }
 
