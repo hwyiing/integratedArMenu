@@ -105,7 +105,7 @@ async function start_ar(loadedChromaVids, mind_file) {
 
         anchors.push(mindarThree.addAnchor(i));
         const GSvideo = loadedChromaVids[i];;
-        const GSplane = createGSplane(GSvideo, 1, 3 / 4);
+        const GSplane = createGSplane(GSvideo, i);
 
         if (i < anchors.length) {
 
@@ -128,7 +128,7 @@ async function start_ar(loadedChromaVids, mind_file) {
 }
 
 
-function createGSplane(GSvideo) {
+function createGSplane(GSvideo, i) {
     const GStexture = new THREE.VideoTexture(GSvideo);
     const GSgeometry = new THREE.PlaneGeometry(1, 1080 / 1920);
     const GSmaterial = createChromaMaterial(GStexture, 0x00ff38);
