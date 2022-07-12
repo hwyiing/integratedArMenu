@@ -29,7 +29,11 @@ async function cloudinaryfetch() {
     // const baseUrl = "https://mind-ar-cms-dev.ap-southeast-1.elasticbeanstalk.com"
     // const result = await axios.get(`${baseUrl}/file_management/public/file_obj/${key}`);
     // const myObject = result.data.data.data;
+
     const myObject = [
+        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657596627/UYKD_somtam_lztqay.mp4",
+        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657595820/UYKD_massaman_f8f2te.mov",
+        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657600456/uykd_lengzaab_jusrwz.mp4",
         "https://res.cloudinary.com/dexwrqqc1/video/upload/v1656432425/ukyd_pudding_zoomed_in_azlppr.mp4",
         "https://res.cloudinary.com/dexwrqqc1/video/upload/v1656432140/GranMonte_Asoke_mbbvkw.mp4",
         "https://res.cloudinary.com/dexwrqqc1/video/upload/v1656432142/GranMonte_Heritage_Syrah_wan1wy.mp4",
@@ -39,7 +43,7 @@ async function cloudinaryfetch() {
 
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
-    return "https://res.cloudinary.com/dexwrqqc1/raw/upload/v1656432383/pudding-wine_n8nxmv.mind"
+    return "https://res.cloudinary.com/dexwrqqc1/raw/upload/v1657600576/uykd_targets_tuqa8h.mind"
 }
 
 //helper function which creates one division consisting of multiple video elements
@@ -122,15 +126,28 @@ async function start_ar(loadedChromaVids, mind_file) {
 
 function createGSplane(GSvideo, i) {
 
-    if (i == 0) {
+    if (i < 4) {
         const GStexture = new THREE.VideoTexture(GSvideo);
         const GSgeometry = new THREE.PlaneGeometry(1, 1080 / 1920);
         const GSmaterial = createChromaMaterial(GStexture, 0x00ff38);
         const GSplane = new THREE.Mesh(GSgeometry, GSmaterial);
-        GSplane.rotation.z = Math.PI / 2;
-        GSplane.scale.multiplyScalar(4);
-        GSplane.position.x = -0.8;
+        switch (i) {
+            case 0:
+            case 1:
+                GSplane.scale.multiplyScalar(2);
+                break;
+
+            case 2:
+                GSplane.scale.multiplyScalar(1.5);
+                GSplane.position.x = 0.2;
+                break;
+
+            case 3:
+                GSplane.scale.multiplyScalar(2);
+                GSplane.position.x = -0.4;
+        }
         return GSplane
+
     } else {
         const texture = new THREE.VideoTexture(GSvideo);
         const geometry = new THREE.PlaneGeometry(1, 1080 / 1920);
@@ -140,8 +157,10 @@ function createGSplane(GSvideo, i) {
         //plane.rotation.z = Math.PI / 2;
         plane.position.x = -0.5;
         return plane
-
     }
+
+
+
     return GSvideo
 }
 
