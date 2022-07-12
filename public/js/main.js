@@ -31,7 +31,8 @@ async function cloudinaryfetch() {
     // const myObject = result.data.data.data;
 
     const myObject = [
-        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657602722/uykd_somtam_GS_udtxjn.mp4",
+        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657605566/somtam_vibrant_1_ys6qbs.mp4",
+        //"https://res.cloudinary.com/dexwrqqc1/video/upload/v1657602722/uykd_somtam_GS_udtxjn.mp4",
         "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657602660/uykd_massaman_gS_tqxiax.mov",
         "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657602704/uykd_lengzaab_GS_e3spv4.mp4",
         // "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657596627/UYKD_somtam_lztqay.mp4",
@@ -46,7 +47,7 @@ async function cloudinaryfetch() {
 
     await createVideoDivision(myObject);
     // return result.data.data.mind_file
-    return "https://res.cloudinary.com/dexwrqqc1/raw/upload/v1657600576/uykd_targets_tuqa8h.mind"
+    return "https://res.cloudinary.com/dexwrqqc1/raw/upload/v1657605029/targets_2_yktmuw.mind"
 }
 
 //helper function which creates one division consisting of multiple video elements
@@ -141,7 +142,6 @@ function createGSplane(GSvideo, i) {
                 break;
 
             case 2:
-                GSplane.scale.multiplyScalar(1.5);
                 GSplane.position.x = 0.2;
                 break;
 
