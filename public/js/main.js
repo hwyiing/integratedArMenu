@@ -31,9 +31,12 @@ async function cloudinaryfetch() {
     // const myObject = result.data.data.data;
 
     const myObject = [
-        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657596627/UYKD_somtam_lztqay.mp4",
-        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657595820/UYKD_massaman_f8f2te.mov",
-        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657600456/uykd_lengzaab_jusrwz.mp4",
+        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657602722/uykd_somtam_GS_udtxjn.mp4",
+        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657602660/uykd_massaman_gS_tqxiax.mov",
+        "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657602704/uykd_lengzaab_GS_e3spv4.mp4",
+        // "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657596627/UYKD_somtam_lztqay.mp4",
+        // "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657595820/UYKD_massaman_f8f2te.mov",
+        // "https://res.cloudinary.com/dexwrqqc1/video/upload/v1657600456/uykd_lengzaab_jusrwz.mp4",
         "https://res.cloudinary.com/dexwrqqc1/video/upload/v1656432425/ukyd_pudding_zoomed_in_azlppr.mp4",
         "https://res.cloudinary.com/dexwrqqc1/video/upload/v1656432140/GranMonte_Asoke_mbbvkw.mp4",
         "https://res.cloudinary.com/dexwrqqc1/video/upload/v1656432142/GranMonte_Heritage_Syrah_wan1wy.mp4",
