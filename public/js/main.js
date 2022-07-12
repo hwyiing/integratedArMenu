@@ -142,7 +142,8 @@ function createGSplane(GSvideo, i) {
                 break;
 
             case 2:
-                GSplane.position.x = 0.2;
+                GSplane.scale.multiplyScalar(1.25);
+                GSplane.position.x = 0.1;
                 break;
 
             case 3:
